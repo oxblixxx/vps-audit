@@ -53,8 +53,22 @@ The SSH port has to bee changed to an **unprivileged port** (a port number great
 - Edit `/etc/ssh/sshd_config` to modify the port manually.  
 - To change the port automatically, run the provided script: [change port](fix_scripts/change_port).  
 
+## Firewall Status
 
-## 4. FIREWALL STATUS
-Before enabling ufw, ensure to allow the port number in `number 5` or `port 22`. 
+Before enabling UFW, make sure to **allow the SSH port** configured in section 5.  
+This ensures you do not get locked out of the server.
 
+- Replace `<PORT>` with your SSH port number (e.g., 2222).  
+- Example command to allow the port:
+
+```bash
+sudo ufw allow <PORT>/tcp
+```
+
+Then you can run 
+
+```sh
+sudo ufw enable
+sudo ufw status
+```
 
