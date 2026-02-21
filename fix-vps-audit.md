@@ -46,10 +46,15 @@ Note: Adjust 23:30 to your desired time using 24-hour format.
 ## 3. SSH Password Auth
 While this depends on the cloud init-image that was used to create the server, to disable password auth can be in the sshd file, or the cloud init file `50-cloud-init.conf`
 
-## 5. SSH PORT
-Changed the port to unprivileged port number, which are port number greater than 1024. Edit `/etc/ssh/sshd_config` 
+## 5. SSH Port
+
+The SSH port has to bee changed to an **unprivileged port** (a port number greater than 1024) to improve security.  
+
+- Edit `/etc/ssh/sshd_config` to modify the port manually.  
+- To change the port automatically, run the provided script: [change port](fix_scripts/change_port).  
+
 
 ## 4. FIREWALL STATUS
-Before enabling ufw, 
+Before enabling ufw, ensure to allow the port number in `number 5` or `port 22`. 
 
 
