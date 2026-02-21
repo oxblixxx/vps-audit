@@ -50,7 +50,7 @@ CPU_INFO=$(lscpu | grep "Model name" | cut -d':' -f2 | xargs)
 CPU_CORES=$(nproc)
 TOTAL_MEM=$(free -h | awk '/^Mem:/ {print $2}')
 TOTAL_DISK=$(df -h / | awk 'NR==2 {print $2}')
-PUBLIC_IP=$(curl -s https://api.ipify.org)
+PUBLIC_IP=$(ip route get 1 | awk '{print $7;exit}')
 LOAD_AVERAGE=$(uptime | awk -F'load average:' '{print $2}' | xargs)
 
 # Print system information
