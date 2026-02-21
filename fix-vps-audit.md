@@ -43,4 +43,12 @@ Note: Adjust 23:30 to your desired time using 24-hour format.
 > 4. Test logging in as the new user to confirm access works.
 > 5. Run the scripts to [remove root login](fix_scripts/disable_root_login).
 
+## 3. SSH Password Auth
+While this depends on the cloud init-image that was used to create the server, to disable password auth can be in the sshd file, or the cloud init file `50-cloud-init.conf`
+
+## 5. SSH PORT
+Changed the port to unprivileged port number, which are port number greater than 1024
+## 4. FIREWALL STATUS
+Before enab
+
 
