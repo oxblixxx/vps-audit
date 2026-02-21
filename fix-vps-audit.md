@@ -35,5 +35,11 @@ echo "sudo reboot" | at 23:30
 Note: Adjust 23:30 to your desired time using 24-hour format.
 
 ## 2. SSH Root Login
-Before disabling SSH Root login, ensure a user has been created and has been giving root privileges, ensure that the user key is copied to authorized keys, ensure to test the user login as well.
+> **Important:** Before disabling SSH root login:
+> 
+> 1. Make sure a non-root [user](fix_scripts/create_user) has been created.  
+> 2. Ensure the user has **sudo/root privileges**.  
+> 3. Copy the user’s **public SSH key** to their `authorized_keys`.  
+> 4. Test logging in as the new user to confirm access works.  
+
 
