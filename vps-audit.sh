@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+w#!/usr/bin/env bash
 
 # Colors for output
 GREEN='\033[0;32m'
@@ -156,10 +156,10 @@ fi
 
 if [ "$SSH_PORT" = "22" ]; then
     check_security "SSH Port" "WARN" "Using default port 22 - consider changing to a non-standard port for security by obscurity"
-elif [ "$SSH_PORT" -ge "$UNPRIVILEGED_PORT_START" ]; then
-    check_security "SSH Port" "FAIL" "Using unprivileged port $SSH_PORT -  use a port below $UNPRIVILEGED_PORT_START for better security"
+elif [ "$SSH_PORT" -le "$UNPRIVILEGED_PORT_START" ]; then
+    check_security "SSH Port" "FAIL" "Using privileged port $SSH_PORT -  use a port greater than $UNPRIVILEGED_PORT_START for better security"
 else
-    check_security "SSH Port" "PASS" "Using non-default port $SSH_PORT which helps prevent automated attacks"
+    check_security "SSH Port" "PASS" "Using unprivileged port $SSH_PORT which helps prevent automated attacks"
 fi
 
 # Check Firewall Status
