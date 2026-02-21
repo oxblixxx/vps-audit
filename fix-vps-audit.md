@@ -40,6 +40,7 @@ Note: Adjust 23:30 to your desired time using 24-hour format.
 > 1. Make sure a non-root [user](fix_scripts/create_user) has been created.  
 > 2. Ensure the user has **sudo/root privileges**.  
 > 3. Copy the user’s **public SSH key** to their `authorized_keys`.  
-> 4. Test logging in as the new user to confirm access works.  
+> 4. Test logging in as the new user to confirm access works.
+> 5. Run the scripts to [remove root login(fix_scripts/disable_root_login).
 
 
