@@ -41,6 +41,6 @@ Note: Adjust 23:30 to your desired time using 24-hour format.
 > 2. Ensure the user has **sudo/root privileges**.  
 > 3. Copy the user’s **public SSH key** to their `authorized_keys`.  
 > 4. Test logging in as the new user to confirm access works.
-> 5. Run the scripts to [remove root login(fix_scripts/disable_root_login).
+> 5. Run the scripts to [remove root login](fix_scripts/disable_root_login).
 
 
