@@ -379,7 +379,8 @@ fi
 
 # Check password policy
 if [ -f "/etc/security/pwquality.conf" ]; then
-    if grep -q "minlen.*12" /etc/security/pwquality.conf; then
+    if grep -q "pam_pwquality.so.*minlen" /etc/pam.d/common-password 2>/dev/null || \
+       grep -q "minlen.*1[2-9]" /etc/security/pwquality.conf 2>/dev/null; then
         check_security "Password Policy" "PASS" "Strong password policy is enforced"
     else
         check_security "Password Policy" "FAIL" "Weak password policy - passwords may be too simple"
