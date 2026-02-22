@@ -111,3 +111,18 @@ To fix this, update the server
 ```sh
 sudo apt upgrade -y
 ```
+
+## 8. SUID Files
+To verify the exact files listed as per the command in the script
+# Run the EXACT same command as your audit script
+
+```sh
+find / -type f -perm -4000 2>/dev/null | \
+grep -v -E "^/usr/bin/|^/bin/|^/sbin/|^/usr/sbin/|^/usr/lib|^/usr/libexec" | \
+grep -v -E "ping$|sudo$|mount$|umount$|su$|passwd$|chsh$|newgrp$|gpasswd$|chfn$" > /tmp/suspicious-suid.txt
+```
+# Review the list, or export the file file out of the server to open it
+```sh
+cat /tmp/suspicious-suid.txt | wc -l 
+less /tmp/suspicious-suid.txt
+```
