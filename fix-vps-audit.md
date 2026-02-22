@@ -68,7 +68,46 @@ sudo ufw allow <PORT>/tcp
 Then you can run 
 
 ```sh
-sudo ufw enable
+sudo ufw --force enable
 sudo ufw status
+sudo ufw allow 80
+sudo ufw allow 443
 ```
 
+## 6. Password Policy
+To fix this, configure PAM password policy by installing & configure libpam-pwquality.
+
+```sh
+sudo apt install libpam-pwquality -y
+```
+
+Then edit the conf file
+
+```sh
+sudo nano /etc/pam.d/common-password
+```
+
+Find this line :
+
+```sh
+password       requisite                       pam_pwquality.so retry=3
+password    [success=1 default=ignore]    pam_unix.so obscure sha512 rem
+```
+Replace with:
+
+```sh
+password    requisite           pam_pwquality.so retry=3 minlen=12 ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1
+password    [success=1 default=ignore]    pam_unix.so obscure sha512 remember=5
+```
+Then test by changing a user password:
+
+```sh
+passwd <username>
+```
+
+## 7. System Updates
+To fix this, update the server
+
+```sh
+sudo apt upgrade -y
+```
